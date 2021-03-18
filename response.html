@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Response Page</title>
+</head>
+<body>
+    <div class="Introduction">
+        <h1>Advicess</h1>
+        <h4>To get Advices click on the button</h4>
+        <div>
+            <button onclick="getAdvices()">Get Advices</button>
+        </div>
+    </div>
+
+    <div id="Advices"></div>
+    <script>
+        const getAdvices = () => {
+            fetch('http://127.0.0.1:3001').then(
+                (res) => {
+                    console.log(res)
+                    return res.text()
+                }
+            ).then(data => {
+            
+                console.log(data)
+                document.getElementById("Advices").innerHTML = data
+            }).catch(err => {
+                document.getElementById("Advices").innerHTML = err
+            })
+        }
+    </script>
+</body>
+</html>
